@@ -45,4 +45,4 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true})
     })
     .catch((error) => console.log(error.message));
     
-mongoose.set('useFindAndModify', false);
+// mongoose.set('useFindAndModify', false);
