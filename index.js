@@ -6,6 +6,7 @@ import path from 'path';
 
 const app = express();
 const SEC_PORT = 443;
+const TEST_PORT = 80;
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -40,7 +41,7 @@ const __dirname = path.resolve();
 
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
-        app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+        app.listen(TEST_PORT, () => console.log(`Server running on port: ${TEST_PORT}`));
         // sslServer.listen(SEC_PORT, () => console.log(`HTTPS Server running on port: ${SEC_PORT}`));
     })
     .catch((error) => console.log(error.message));
