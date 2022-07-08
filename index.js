@@ -23,23 +23,24 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
     return next();
-  });
+    }
+);
 
-  const __dirname = path.resolve();
+const __dirname = path.resolve();
 
-  const sslServer = https.createServer(
-    {
+// const sslServer = https.createServer(
+//     {
     
-    "key" : fs.readFileSync(path.join(__dirname, 'ssl', 'private.pem')),
-        "cert": fs.readFileSync(path.join(__dirname, 'ssl', 'cert_chain.pem'))
-    },
-    app
-)
+//     "key" : fs.readFileSync(path.join(__dirname, 'ssl', 'private.pem')),
+//         "cert": fs.readFileSync(path.join(__dirname, 'ssl', 'cert_chain.pem'))
+//     },
+//     app
+// );
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
-        sslServer.listen(SEC_PORT, () => console.log(`HTTPS Server running on port: ${SEC_PORT}`));
+        // sslServer.listen(SEC_PORT, () => console.log(`HTTPS Server running on port: ${SEC_PORT}`));
     })
     .catch((error) => console.log(error.message));
     
