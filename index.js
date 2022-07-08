@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const SEC_PORT = 443;
