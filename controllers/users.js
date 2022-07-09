@@ -24,10 +24,10 @@ export const getUserByGoogleId = async(req, res) => {
     const user = await user_schema.findOne({ "googleId" : _googId } , (error, user_data) => {
         if(error) return res.status(500).json({ message : "error" });
         if(user_data) {
-            res.status(200).json(user);
+            res.status(200).json(user_data);
         } else { //FIX: IF NOT FOUND RES.STATUS(409) WHY RES.STATUS(200)?
             console.log(`not found ${_googId} on DB`);
-            res.status(200).json(user); 
+            res.status(200).json(user_data); 
         }
     });
 }
