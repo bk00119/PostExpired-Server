@@ -7,16 +7,13 @@ export const createUser = async(req, res) => {
     const user = new user_schema(req.body);
     
     try {
-        console.log(req.body);
         if(req.body.email && req.body.email!=undefined && req.body.email !=''){ //checking if there's any error in req.body
+            console.log(req.body.email,"created an account.");
             await user.save(); //saves user data on DB
-            console.log("created!");
         }
         res.status(201).json(user); //201: created
-        console.log("created?");
     } catch (error) {
         res.status(409).json({ message : error.message });
-        console.log("error");
     }
 }
 
