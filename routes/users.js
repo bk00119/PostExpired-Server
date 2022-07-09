@@ -5,7 +5,7 @@ import { createUser , getUserByGoogleId } from '../controllers/users.js';
 const router = express.Router();
 
 //POST
-router.post('/', createUser);
+router.post('/create', createUser);
 
 //GET
 router.get('/:googId', getUserByGoogleId);
