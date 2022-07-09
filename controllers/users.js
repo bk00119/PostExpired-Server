@@ -32,6 +32,13 @@ export const getUserByGoogleId = async(req, res) => {
     //     }
     // });
 
-    const user = await user_schema.findOne({ "googleId" : _googId });
-    console.log(user);
+    // const user = await user_schema.findOne({ "googleId" : _googId });
+    // console.log(user);
+
+    const user = user_schma.findOne({ "googleId": _googId }, (error, user_data) => {
+        if(error) return res.status(500).json({message: "error" });
+        if(user_data) {
+            res.status(200).json(user_data);
+        }
+    })
 }
