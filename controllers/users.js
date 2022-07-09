@@ -9,10 +9,13 @@ export const createUser = async(req, res) => {
     try {
         if(req.body.email && req.body.email!=undefined && req.body.email !=''){ //checking if there's any error in req.body
             await user.save(); //saves user data on DB
+            console.log("created!");
         }
         res.status(201).json(user); //201: created
+        console.log(res.status);
     } catch (error) {
         res.status(409).json({ message : error.message });
+        console.log(res.status);
     }
 }
 
