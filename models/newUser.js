@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const registerSchema = mongoose.Schema({
+const registerUser = mongoose.Schema({
     fullName: String,
     firstName: String,
     lastName: String,
