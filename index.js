@@ -32,19 +32,19 @@ app.use((req, res, next) => {
 
 const __dirname = path.resolve();
 
-// const sslServer = https.createServer(
-//     {
+const sslServer = https.createServer(
+    {
     
-//     "key" : fs.readFileSync(path.join(__dirname, '/etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'private.pem')),
-//         "cert": fs.readFileSync(path.join(__dirname, '/etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'cert_chain.pem'))
-//     },
-//     app
-// );
+    "key" : fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'private.pem')),
+        "cert": fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'cert_chain.pem'))
+    },
+    app
+);
 
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         app.listen(TEST_PORT, () => console.log(`Server running on port: ${TEST_PORT}`));
-        // sslServer.listen(SEC_PORT, () => console.log(`HTTPS Server running on port: ${SEC_PORT}`));
+        sslServer.listen(SEC_PORT, () => console.log(`HTTPS Server running on port: ${SEC_PORT}`));
     })
     .catch((error) => console.log(error.message));
     
