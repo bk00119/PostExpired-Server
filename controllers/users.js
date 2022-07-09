@@ -1,4 +1,4 @@
-import user_schema from '../models/registerUser.js';
+import user_schema from '../models/newUser.js';
 
 import fs from 'fs';
 
