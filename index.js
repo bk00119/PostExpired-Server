@@ -34,9 +34,8 @@ const __dirname = path.resolve();
 
 const sslServer = https.createServer(
     {
-    
-    "key" : fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'private.pem')),
-        "cert": fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com/fullchain.pem', 'cert_chain.pem'))
+        "key" : fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com', 'privkey.pem')),
+        "cert": fs.readFileSync(path.join(__dirname, '../../../etc/letsencrypt/live/api.postexpired.com', 'fullchain.pem'))
     },
     app
 );
