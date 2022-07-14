@@ -46,7 +46,7 @@ export const getUserByGoogleId = async(req, res) => {
         } else { //FIX: IF NOT FOUND RES.STATUS(409) WHY RES.STATUS(200)?
             // console.log(`not found ${_googId} on DB`);
             // res.status(200).json(user_data); 
-            console.log(_googleId);
+            console.log(_googId);
             await createUser(req, res);
             // test(req, res);
         }
