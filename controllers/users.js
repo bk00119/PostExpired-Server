@@ -30,7 +30,8 @@ export const getUserByGoogleId = async(req, res) => {
             res.status(200).json(user_data);
         } else { //FIX: IF NOT FOUND RES.STATUS(409) WHY RES.STATUS(200)?
             console.log(`not found ${_googId} on DB`);
-            res.status(200).json(user_data); 
+            // res.status(200).json(user_data); 
+            res.status(409).json({ message : "user not found" });
         }
     });
 }
