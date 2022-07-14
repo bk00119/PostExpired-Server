@@ -46,7 +46,7 @@ export const getUserByGoogleId = async(req, res) => {
             // res.status(200).json(user_data); 
             console.log("creating...");
             // createUser(req, res);
-            await test(req, res);
+            test(req, res);
         }
     });
 }
