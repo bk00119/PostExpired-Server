@@ -11,10 +11,8 @@ export const createUser = async(req, res) => {
             console.log(req.body.email,"created an account.");
             await user.save(); //saves user data on DB
         }
-        console.log("success req");
         res.status(201).json(user); //201: created
     } catch (error) {
-        console.log("error");
         res.status(409).json({ message : error.message });
     }
 }
@@ -24,14 +22,21 @@ export const getUserByGoogleId = async(req, res) => {
     //FIX: USE TRY&CATCH INSTEAD OF IF&ELSE
     const { googId : _googId } = req.params;
 
-    // const user = await user_schema.findOne({ "googleId" : _googId });
     const user = user_schema.findOne({ "googleId" : _googId } , (error, user_data) => {
         if(user_data) {
-            res.status(200).json(user_data);
-        } else { //FIX: IF NOT FOUND RES.STATUS(409) WHY RES.STATUS(200)?
+            return res.status(200).json(user_data);
+        }
+        console.log(`not found ${_googId} on DB`);
+        res.status(409).json({ message : "user not found" });
+
+        try {
+            if(user_data){
+                res.status(200).json(user_data);
+            }
+        } catch (error) {
             console.log(`not found ${_googId} on DB`);
-            // res.status(200).json(user_data); 
-            res.status(409).json({ message : "user not found" });
+            // res.status(409).json({ message : "user not found" });
+            res.status(409).json({ message : error.message });
         }
     });
 }
