@@ -3,7 +3,7 @@ import user_schema from '../models/newUser.js';
 import fs from 'fs';
 
 //POST
-export const createUser = async(req, res) => {
+const createUser = async(req, res) => {
     const user = new user_schema(req.body);
     
     try {
@@ -34,3 +34,5 @@ export const getUserByGoogleId = async(req, res) => {
         }
     });
 }
+
+export default createUser;
