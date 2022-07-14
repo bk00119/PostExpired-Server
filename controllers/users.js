@@ -4,6 +4,7 @@ import fs from 'fs';
 
 //POST
 const test = async(req, res) => {
+    console.log("testing...");
     const user = new user_schema(req.body);
     
     try {
